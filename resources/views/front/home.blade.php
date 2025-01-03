@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
 @push('styles')
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
     <style>
         .copy-link-button {
             display: inline-block;
@@ -15,7 +15,8 @@
         }
 
         .toast-success {
-            background-color: #000 !important; /* Set your custom background color here */
+            background-color: #000 !important;
+            /* Set your custom background color here */
         }
     </style>
 @endpush
@@ -63,11 +64,11 @@
             <div class="row justify-content-center align-items-center">
                 <div class="col-12 col-lg-6" data-aos="fade-right">
                     <div class="about-us-img">
-                        <img src="{{ asset('assets/front/img/about-us.jpg') }}" alt="about-us-img">
+                        <img src="{{ asset('assets/front/img/ft_render.jpg') }}" alt="ft_render-img">
                     </div>
                 </div>
                 <div class="col-12 col-lg-6" data-aos="fade-left">
-                    <div class="card border-0 rounded-0">
+                    <div class="card rounded-0 border-0">
                         <div class="card-body">
                             <h2 class="mb-3">About Us</h2>
                             <img src="{{ asset('assets/front/img/logo.jpg') }}" alt="logo">
@@ -113,8 +114,8 @@
                                         <div class="gallery-button mt-2">
                                             <a href="{{ route('product.detail', $gallery->slug) }}"><i
                                                     class="fa-solid fa-magnifying-glass"></i></a>
-                                            <button type="button" class="copy-link-button"
-                                                data-link="{{ route('product.detail', $gallery->slug) }}"><i
+                                            <button class="copy-link-button"
+                                                data-link="{{ route('product.detail', $gallery->slug) }}" type="button"><i
                                                     class="fa-solid fa-link"></i></button>
                                         </div>
                                     </div>
@@ -144,10 +145,10 @@
                         <div class="row g-3 g-lg-4">
                             @foreach ($videos as $video)
                                 <div class="col-12 col-md-6 col-lg-4">
-                                    <div class="card border-0 rounded-0">
+                                    <div class="card rounded-0 border-0">
                                         <div class="card-body p-0">
-                                            <iframe src="{{ $video->link_video ?? '' }}" frameborder="0"
-                                                class="yt-frame"></iframe>
+                                            <iframe class="yt-frame" src="{{ $video->link_video ?? '' }}"
+                                                frameborder="0"></iframe>
                                         </div>
                                     </div>
                                 </div>
@@ -210,7 +211,7 @@
                     <div class="content-body" data-aos="fade-up">
                         <div class="row justify-content-center align-items-center">
                             <div class="col-12 col-lg-6">
-                                <iframe src="{{ $aboutUs->maps ?? '' }}" frameborder="0" class="maps-frame"></iframe>
+                                <iframe class="maps-frame" src="{{ $aboutUs->maps ?? '' }}" frameborder="0"></iframe>
                             </div>
                             <div class="col-12 col-lg-6">
                                 <div class="row">
@@ -265,7 +266,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script>
-       $(document).ready(function() {
+        $(document).ready(function() {
             // Initialize Clipboard.js
             new ClipboardJS('.copy-link-button', {
                 text: function(trigger) {
@@ -280,7 +281,7 @@
 
             function showCopySuccessNotification() {
                 // Show a Toastr toast notification
-                toastr.success('Link Copied!', null, { 
+                toastr.success('Link Copied!', null, {
                     timeOut: 1500,
                     positionClass: 'toast-bottom-left',
                     progressBar: true,
